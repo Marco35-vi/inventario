@@ -51,4 +51,61 @@ rutas.delete('/eliminar/:id',async (req, res) => {
         res.status(500).json({ mensaje :  error.message})
     }
 });
+
+//obtener el producto con la mayor cantidad en stock:
+rutas.get('/maximo', async (req, res) => {
+    try {
+      const productoMaximo = await InventarioModel.findOne().sort({ cantidades: -1 }).limit(1);
+      res.json(productoMaximo);
+    } catch (error) {
+      res.status(500).json({ mensaje: error.message });
+    }
+  });
+  //obtener el producto con la menor cantidad en stock:
+  rutas.get('/minimo', async (req, res) => {
+    try {
+      const productoMinimo = await InventarioModel.findOne().sort({ cantidades: 1 }).limit(1);
+      res.json(productoMinimo);
+    } catch (error) {
+      res.status(500).json({ mensaje: error.message });
+    }
+  });
+
+  //obtener la suma total de todas las cantidades en el inventario:
+  rutas.get('/total', async (req, res) => {
+    try {
+      const totalCantidades = await InventarioModel.aggregate([
+        { $group: { _id: null, total: { $sum: '$cantidades' } } }
+      ]);
+      res.json({ total: totalCantidades[0].total });
+    } catch (error) {
+      res.status(500).json({ mensaje: error.message });
+    }
+  });
+
+  //obtener productos por rango de cantidades:
+rutas.get('/rango/:min/:max', async (req, res) => {
+  try {
+    const productos = await InventarioModel.find({
+      cantidades: { $gte: req.params.min, $lte: req.params.max }
+    });
+    res.json(productos);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+});
+//obtener productos por palabra clave en el nombre o descripción:
+rutas.get('/buscar/:keyword', async (req, res) => {
+    try {
+      const productos = await InventarioModel.find({
+        $or: [
+          { nombreproducto: { $regex: req.params.keyword, $options: 'i' } },
+          { descripcion: { $regex: req.params.keyword, $options: 'i' } }
+        ]
+      });
+      res.json(productos);
+    } catch (error) {
+      res.status(500).json({ mensaje: error.message });
+    }
+  });
 module.exports = rutas;
