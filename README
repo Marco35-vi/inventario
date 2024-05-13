@@ -1,0 +1,15 @@
+OBJETIVO GENERAL
+El objetivo general de este proyecto es desarrollar un API robusto y eficiente utilizando 
+Express y MongoDB para gestionar un sistema de inventarios de productos. Se busca crear una 
+plataforma escalable y segura que permita realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) 
+realizando pruebas en postman sobre los productos en el inventario, así como implementar consultas 
+avanzadas para obtener información específica de los productos.
+
+Este objetivo se enfoca en garantizar un diseño modular y bien estructurado del API, siguiendo las mejores 
+prácticas de desarrollo de software. Se busca optimizar el rendimiento y la seguridad del sistema, 
+asegurando la integridad de los datos almacenados en la base de datos MongoDB y facilitando la 
+interacción con la API a través de endpoints claros y funcionales.
+
+Además, se pretende implementar un manejo adecuado de errores y excepciones, así como documentar 
+correctamente el API para facilitar su mantenimiento y futuras actualizaciones. Se busca también integrar 
+pruebas unitarias y de integración para garantizar la fiabilidad y estabilidad del sistema.
