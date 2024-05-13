@@ -38,7 +38,7 @@ rutas.put('/editar/:id', async (req, res) => {
         res.status(400).json({ mensaje :  error.message})
     }
 })
-//ENDPOINT 4. eliminar
+//endpoint 4. eliminar
 rutas.delete('/eliminar/:id',async (req, res) => {
     try {
        const productoEliminado = await InventarioModel.findByIdAndDelete(req.params.id);
