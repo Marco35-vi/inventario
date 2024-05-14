@@ -1,7 +1,6 @@
 TEMA: Inventario de productos tecnológicos
 OBJETIVO GENERAL
-Desarrollar un sistema web para gestionar un sistema de inventarios de productos tecnológicos. 
+Desarrollar una aplicacion web para gestionar un sistema de inventarios de productos tecnológicos. 
 Se busca crear una plataforma escalable y segura que permita realizar operaciones 
 CRUD (Crear, Leer, Actualizar, Eliminar) realizando pruebas en postman sobre los productos en el 
 inventario, así como implementar consultas avanzadas para obtener información específica de los productos.
-
