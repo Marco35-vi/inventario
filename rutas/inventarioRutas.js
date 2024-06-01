@@ -4,6 +4,7 @@ const InventarioModel = require('../models/Inventario');
 
 //endpoint traer los productos
 rutas.get('/traerInventario', async (req, res) => {
+  console.log("inventarios");
     try {
         const inventario = await InventarioModel.find();
         res.json(inventario);
@@ -16,7 +17,9 @@ rutas.post('/agregar', async (req, res) => {
     const inventario = new InventarioModel({
         nombreproducto: req.body.nombreproducto,
         descripcion: req.body.descripcion,
-        cantidades: req.body.cantidades
+        cantidades: req.body.cantidades,
+        precio: req.body.precio,
+        usuario: req.body.usuario
     })
     try {
         const nuevoInventario = await inventario.save();
